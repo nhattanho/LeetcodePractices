@@ -37,7 +37,7 @@ public:
 			count += abs(mapt[c]-maps[c]);
 		}
 		return count/2;
-    }
+	}
 };
 
 /*Find the different characters of 2 strings using vector*/
