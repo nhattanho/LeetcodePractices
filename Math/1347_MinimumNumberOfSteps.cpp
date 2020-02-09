@@ -44,11 +44,11 @@ public:
 class Solution {
 public:
     int minSteps(string s, string t) {
-		int alpha[26];
+		int alpha[26] = {};
         int count = 0;
         for(auto x:t) alpha[x-'a']++;
         for(auto x:s) alpha[x-'a']--;
 		for(int i = 0; i < 26; i++) count += abs(alpha[i]);
 		return count/2;
-    }
+	}
 };
