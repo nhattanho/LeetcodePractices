@@ -32,7 +32,7 @@ public:
         int count = 0;
         for(auto x:t) mapt[x]++;
         for(auto x:s) maps[x]++;
-        for(int i = 0; i < 26; i++){
+		for(int i = 0; i < 26; i++){
 			char c = i + 'a';
 			count += abs(mapt[c]-maps[c]);
 		}
@@ -48,11 +48,7 @@ public:
         int count = 0;
         for(auto x:t) alpha[x-'a']++;
         for(auto x:s) alpha[x-'a']--;
-		for(int i = 0; i < 26; i++){
-			count += abs(alpha[i]);
-		}
+		for(int i = 0; i < 26; i++) count += abs(alpha[i]);
 		return count/2;
     }
 };
-
-
