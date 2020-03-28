@@ -1,4 +1,4 @@
-/*Naive-Brute Force Solution-Time Complexity 0(n^3)*/
+/*Naive-Brute Force Solution-Time Complexity 0(n^3) Space 0(1)*/
 class Solution {
 public:
     string longestPalindrome(string s) {
@@ -42,7 +42,7 @@ public:
 };
 
 /*Better solution by using DP, Expand Around Center, or Manacher Algorithm*/
-/*1-Expand Around Center-Time Complexity 0(n^2)*/
+/*1-Expand Around Center-Time Complexity 0(n^2), Space 0(1)*/
 class Solution {
 public:
     int checkPalindrome(string s, int left, int right){
@@ -97,7 +97,7 @@ string longestPalindrome(string s) {
     return s.substr(start, end-start+1);
 }
 
-/*2-Dynamic Programming*/
+/*2-Dynamic Programming-Time Complexity 0(n^2) Space: 0(n^2)*/
 class Solution {
 public:
     string longestPalindrome(string s) {
@@ -123,3 +123,31 @@ public:
         return s.substr(start, end-start+1);
     }
 };
+/*Mofidy some minor things that makes the code is easier to read*/
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int len = s.length();
+        if(len < 2) return s;
+        vector<vector<int>>temp(len, vector<int>(len,0));
+        int start = 0, longest = 1;
+
+        for(int i = 0; i < len; i++) temp[i][i] = 1;
+        for(int n = 2; n <= len; n++){
+            for(int i = 0; i <= len-n; i++){
+                int j = n+i-1;
+                if(s[i] == s[j])
+                    temp[i][n+i-1] = (temp[i+1][j-1] == n - 2)?n:1;
+                else
+                    temp[i][j] = max(temp[i+1][j], temp[i][j-1]);
+                if(temp[i][j] > longest){
+                        start = i;
+                        longest = temp[i][j];
+                }
+            }
+        }
+        return s.substr(start, longest);
+    }
+};
+
+/*3-Manacher's Algorithm*/
