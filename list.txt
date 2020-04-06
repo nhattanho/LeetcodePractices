@@ -42,6 +42,8 @@
 5_Longest Palindromic Substring
 58_Length of Last Word
 214_Shortest Palindrome
+228_Summary Ranges
+242_Valid Anagram
 409_Longest Palindrome
 442_Find All Duplicates
 448_Find All Number Disappeared
