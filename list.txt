@@ -12,6 +12,7 @@
 136_Single Number
 202_Happy Number
 283_Move Zeroes
+#_Counting Elements
 
 /* Binary Tree */
 100_SameTree.cpp
