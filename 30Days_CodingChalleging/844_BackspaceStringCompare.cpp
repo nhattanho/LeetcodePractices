@@ -45,3 +45,24 @@ public:
         return (reduceBackspace(s)==reduceBackspace(t))?true:false;
     }
 };
+
+//Better performance with Time Complexity O(n), Space O(1)
+class Solution {
+public: 
+    string get(string s){
+        int lens = s.length(), pos = 0;
+        for(int i = 0; i < lens; i++){
+            if(s[i] == '#'){
+                pos--;
+                if(pos<0) pos = 0;
+                /*if(pos>=0) s[pos] = NULL;*/
+            }
+            else s[pos++] = s[i];
+        }
+        return s.substr(0, pos);
+    }
+    
+    bool backspaceCompare(string s, string t) {
+        return (get(s) == get(t))?true:false;
+    }
+};
