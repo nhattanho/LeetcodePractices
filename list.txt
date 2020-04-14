@@ -15,6 +15,7 @@
 283_Move Zeroes
 844_Backspace String Compare
 876_Middle of The Link List
+1046_Last Stone Weight
 #_Counting Elements
 
 /* Binary Tree */
