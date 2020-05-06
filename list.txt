@@ -26,6 +26,7 @@
 101_Symmetric Tree
 104_Maximum Depth of Binary Tree
 111_Minimum Depth of Binary Tree
+222_Count Complete Tree Nodes
 226_Invert BT
 543_Diameter of BT
 563_Binary Tree Tilt
