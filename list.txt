@@ -8,6 +8,7 @@
 
 /* 30 Coding Challenging */
 53_Maximum Subarray
+64_Minimum Path Sum
 122_Best Time to Buy and Sell Stock II
 155_Min Stack
 136_Single Number
