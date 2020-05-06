@@ -30,6 +30,7 @@
 222_Count Complete Tree Nodes
 226_Invert BT
 543_Diameter of BT
+559_Maximum Depth of N-ary Tree
 563_Binary Tree Tilt
 872_Leaf-Similar Trees
 1022_Sum of Root To Leaf Binary Numbers
