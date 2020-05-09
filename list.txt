@@ -18,6 +18,7 @@
 678_Valid Parenthesis String
 844_Backspace String Compare
 876_Middle of The Link List
+1008_Construct Binary Search Tree from Preorder Traversal
 1046_Last Stone Weight
 #_Perform String Shifts
 #_Counting Elements
