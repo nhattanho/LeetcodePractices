@@ -5,8 +5,9 @@
 /* 4. Mathematics */
 /* 5. String-Array */
 /* 6. Link List */
+/* 7. Binary Search */
 
-/* 30 Coding Challenging */
+/* 1. 30 Coding Challenging */
 53_Maximum Subarray
 64_Minimum Path Sum
 122_Best Time to Buy and Sell Stock II
@@ -23,7 +24,7 @@
 #_Perform String Shifts
 #_Counting Elements
 
-/* Binary Tree */
+/* 2. Binary Tree */
 100_SameTree
 101_Symmetric Tree
 104_Maximum Depth of Binary Tree
@@ -38,10 +39,10 @@
 1302_Deepest Leaves Sum
 1382_Balance a BST
 
-/* Design Class */
+/* 3. Design Class */
 1381_Design a Stack With Increment Operation
 
-/* Mathematics */
+/* 4. Mathematics */
 127_Word Ladder
 169_Majority Element
 229_Majority Element II
@@ -50,7 +51,7 @@
 1351_Count Negative Numbers in a sorted Matrix
 1352_Product Of the Last K Numbers
 
-/* String-Array */
+/* 5. String-Array */
 1_Two Sum
 3_Longest Substring Without Repeating Characters
 4_Median of Two Sorted Arrays
@@ -73,5 +74,8 @@
 1394_Find LuckyInteger in an Array
 1395_Count Number of Teams
 
-/* Link List */
+/* 6. Link List */
 2_Add Two Numbers
+
+/* 7. Binary Search */
+278_First Bad Version
