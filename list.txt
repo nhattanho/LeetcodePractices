@@ -67,6 +67,7 @@
 448_Find All Number Disappeared
 516_Longest Palindrome Subsequence
 647_Palindromic Substrings
+771_Jewels and Stones
 1047_Remove All Adjacent Duplicates In String
 1221_Split A string InBalanced strings
 1374_Generate a String with characters that have odd counts
