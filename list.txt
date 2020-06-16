@@ -6,6 +6,7 @@
 /* 5. String-Array */
 /* 6. Link List */
 /* 7. Binary Search */
+/* 8. BitWise */
 
 /* 1. 30 Coding Challenging */
 53_Maximum Subarray
@@ -81,3 +82,6 @@
 
 /* 7. Binary Search */
 278_First Bad Version
+
+/* 8. BitWise */
+476_Number Complement
