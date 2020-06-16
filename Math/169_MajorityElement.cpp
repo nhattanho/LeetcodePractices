@@ -1,5 +1,13 @@
 /*Version1: Using A Linear Time Majority Vote Algorithm
-http://www.cs.utexas.edu/~moore/best-ideas/mjrty/index.html*/
+http://www.cs.utexas.edu/~moore/best-ideas/mjrty/index.html
+Assume a is the number having the frequency > N/2
+and b is the second number having the frequency > N/2
+==> frequency of (a and b) > N elements ==> rejected
+So, there is maximum one integer number, for ex, called a,
+having the frequency > N/2 ==> the frequency of the rest number
+has to be < N/2 ==> using decrease or increase the count by
+checking each number will help us find exactly what the number
+a is. */
 
 class Solution {
 public:
