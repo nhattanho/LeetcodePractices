@@ -61,6 +61,7 @@
 214_Shortest Palindrome
 228_Summary Ranges
 242_Valid Anagram
+383_Ransome Note
 409_Longest Palindrome
 438_Find All Anagrams in a String
 442_Find All Duplicates
