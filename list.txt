@@ -7,6 +7,8 @@
 /* 6. Link List */
 /* 7. Binary Search */
 /* 8. BitWise */
+/* 9. DFS&BFS */
+/* 10. Hash */
 
 /* 1. 30 Coding Challenging */
 53_Maximum Subarray
@@ -48,6 +50,7 @@
 169_Majority Element
 229_Majority Element II
 433_Minimum Genetic Mutation
+1232_Check if it is a straight line
 1347_Minimum Number Of Steps to make two string Anagram
 1351_Count Negative Numbers in a sorted Matrix
 1352_Product Of the Last K Numbers
@@ -82,6 +85,15 @@
 
 /* 7. Binary Search */
 278_First Bad Version
+367_Valid Perfect Square
+540_Single Element in Sorted Array
 
 /* 8. BitWise */
 476_Number Complement
+
+/* 9. DFS&BFS */
+733_Flood Fill
+993_Cousins in BST
+
+/* 10. Hash */
+387_First Unique character
