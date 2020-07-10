@@ -49,11 +49,14 @@
 127_Word Ladder
 169_Majority Element
 229_Majority Element II
+402_Remove K digits
 433_Minimum Genetic Mutation
 1232_Check if it is a straight line
 1347_Minimum Number Of Steps to make two string Anagram
 1351_Count Negative Numbers in a sorted Matrix
 1352_Product Of the Last K Numbers
+1502_Can make Arithmetic Progression From Sequence
+1502_Last Moment Before All Ants Fall Out of a Plank
 
 /* 5. String-Array */
 1_Two Sum
@@ -80,6 +83,7 @@
 1380_Lucky Numbers
 1394_Find LuckyInteger in an Array
 1395_Count Number of Teams
+1408_String Matching in an Array
 
 /* 6. Link List */
 2_Add Two Numbers
