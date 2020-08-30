@@ -9,6 +9,8 @@
 /* 8. BitWise */
 /* 9. DFS&BFS */
 /* 10. Hash */
+/* 11. Sliding Window */
+/* 12. Monotonous Stack */
 
 /* 1. 30 Coding Challenging */
 53_Maximum Subarray
@@ -101,3 +103,8 @@
 993_Cousins in BST
 
 /* 10. Hash */
+
+/* 11. Sliding Window */
+
+/* 12. Monotonous Stack */
+907_Sum of Subarray Minimums
