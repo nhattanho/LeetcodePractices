@@ -75,3 +75,32 @@ public:
 };
 
 /* Optimize the Mono Stack */
+class Solution {
+public:
+    int sumSubarrayMins(vector<int>& a) {
+        int mod = pow(10, 9) + 7;
+        int ans = 0;
+        int len = a.size();
+        stack<int>st;
+        vector<int> left(len), right(len);
+        for(int i = 0; i < len; i++) {
+            left[i] = i+1;
+            right[i] = len-i;
+            while(!st.empty()){
+                if(a[st.top()] <= a[i]){
+                    left[i] = i - st.top();//Found the left-less ==> save the distance
+                    break;
+                } else if (a[st.top()] > a[i]) {
+                    right[st.top()] = i - st.top();//Found the right-less ==>save the distance
+                    st.pop();//==> found the left and the right ==> pop it out the stack
+                }
+            }
+            st.push(i);//save the previous value prepairing for the next step
+        }
+        for(int i=0 ; i < len; i++){
+            ans = ans%mod;
+            ans = ans + (a[i]*left[i]*right[i])%mod;
+        }
+        return ans;
+    }
+};
