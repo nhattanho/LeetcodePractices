@@ -11,6 +11,7 @@
 /* 10. Hash */
 /* 11. Sliding Window */
 /* 12. Monotonous Stack */
+/* 13. Back Track */
 
 /* 1. 30 Coding Challenging */
 53_Maximum Subarray
@@ -110,3 +111,7 @@
 
 /* 12. Monotonous Stack */
 907_Sum of Subarray Minimums
+
+/* 13. Back Track */
+39_Combination Sum
+40_Combination Sum II
