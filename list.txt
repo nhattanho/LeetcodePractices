@@ -86,6 +86,7 @@
 1394_Find LuckyInteger in an Array
 1395_Count Number of Teams
 1408_String Matching in an Array
+1576_Replace All ? to avoid Consecutive Repeating Characters
 
 /* 6. Link List */
 2_Add Two Numbers
