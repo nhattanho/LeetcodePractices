@@ -12,6 +12,7 @@
 /* 11. Sliding Window */
 /* 12. Monotonous Stack */
 /* 13. Back Track */
+/* 14. Hash-Map */
 
 /* 1. 30 Coding Challenging */
 53_Maximum Subarray
@@ -115,3 +116,6 @@
 /* 13. Back Track */
 39_Combination Sum
 40_Combination Sum II
+
+/* 14. Hash-Map */
+1577_Number of Ways Where Square of Number Is Equal to Product of Two Numbers
