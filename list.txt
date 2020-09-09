@@ -13,6 +13,7 @@
 /* 12. Monotonous Stack */
 /* 13. Back Track */
 /* 14. Hash-Map */
+/* 15. Two Pointers */
 
 /* 1. 30 Coding Challenging */
 53_Maximum Subarray
@@ -78,9 +79,11 @@
 438_Find All Anagrams in a String
 442_Find All Duplicates
 448_Find All Number Disappeared
+482_License Key Formatting
 516_Longest Palindrome Subsequence
 647_Palindromic Substrings
 771_Jewels and Stones
+929_Unique Email Address
 1047_Remove All Adjacent Duplicates In String
 1221_Split A string InBalanced strings
 1374_Generate a String with characters that have odd counts
@@ -94,6 +97,8 @@
 2_Add Two Numbers
 
 /* 7. Binary Search */
+33_Search in Rotated Sorted Array
+81_Search in Rotated Sorted Array II
 278_First Bad Version
 367_Valid Perfect Square
 540_Single Element in Sorted Array
@@ -119,3 +124,7 @@
 
 /* 14. Hash-Map */
 1577_Number of Ways Where Square of Number Is Equal to Product of Two Numbers
+
+/* 15. Two Pointers */
+11_Container With Most Water
+15_3 Sum
