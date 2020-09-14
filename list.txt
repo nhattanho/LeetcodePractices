@@ -107,6 +107,8 @@
 476_Number Complement
 
 /* 9. DFS&BFS */
+200_Number Of Island
+694_Number of Distinct Islands
 733_Flood Fill
 993_Cousins in BST
 
