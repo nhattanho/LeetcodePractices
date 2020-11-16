@@ -112,6 +112,7 @@
 694_Number of Distinct Islands
 733_Flood Fill
 993_Cousins in BST
+1197_Minimum Knight Moves
 
 /* 10. Hash */
 
