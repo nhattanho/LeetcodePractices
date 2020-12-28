@@ -33,6 +33,7 @@ sum      2    1    6    4    7
 4-3 = 1
 
 + calculation the sum => add into map<sum, position> ==> check if subtraction = sum - key exist in the map ==> find out the len of sub array
+link reference: https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/discuss/77793/O(n)-C%2B%2B-solution-using-unordered_map
 */
 
 class Solution {
