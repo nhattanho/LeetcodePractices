@@ -46,15 +46,45 @@ public:
         for(int i = 0; i < len; i++){
             sum += nums[i];
             if(sumIndex.count(sum) == 0) sumIndex[sum] = i; // just need to get the first position of sums having equal value
-            // pos:         [0] [1] [2] [3] [4] [5] [6]
-            // example:      1  -1   1   5  -2   3  -2
-            //==> sumIndex:  1   0   1   6   4   7   5 ==> for sum = 1, just give the position 0
+            // pos:         [0] [1] [2] [3] [4] [5] [6] [7] [8]
+            // example:      1  -1   1   5  -2   3  -2  -2  -2
+            //==> sumIndex:  1   0   1   6   4   7   5   3   1 ==> for sum = 1, just give the position 0
             
             if(sum == k) maxL = max(maxL, i+1);
             else if (sumIndex.count(sum - k) != 0){
                 maxL = max(maxL, i - sumIndex[sum-k]);
             }
         }
+        return maxL;
+        
+    }
+};
+
+
+// The wrong way: checking with an example: [1 1 0] k = 1
+class Solution {
+public:
+    int maxSubArrayLen(vector<int>& nums, int k) {
+        int len = nums.size();
+        int sum = 0, maxL = 0;
+        unordered_map<int, int> sumIndex;
+        
+        for(int i = 0; i < len; i++){
+            sum += nums[i];
+            if(sumIndex.count(sum) == 0) sumIndex[sum] = i;
+            else {
+                if(sum == k) {
+                    sumIndex[sum] = i;
+                    // maxL = max(maxL,i+1);
+                }
+            }
+        }
+        
+        for(auto x: sumIndex){
+            if(x.first == k) maxL = max(maxL, x.second+1);
+            else if(sumIndex.count(x.first-k) != 0) maxL = max(maxL, x.second-sumIndex[x.first-k]);
+        }
+        
         return maxL;
         
     }
