@@ -45,7 +45,10 @@ public:
         
         for(int i = 0; i < len; i++){
             sum += nums[i];
-            if(sumIndex.count(sum) == 0) sumIndex[sum] = i;
+            if(sumIndex.count(sum) == 0) sumIndex[sum] = i; // just need to get the first position of sums having equal value
+            // pos:         [0] [1] [2] [3] [4] [5] [6]
+            // example:      1  -1   1   5  -2   3  -2
+            //==> sumIndex:  1   0   1   6   4   7   5 ==> for sum = 1, just give the position 0
             
             if(sum == k) maxL = max(maxL, i+1);
             else if (sumIndex.count(sum - k) != 0){
