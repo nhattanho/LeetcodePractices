@@ -44,4 +44,20 @@ public:
     }
 };
 
-/*Reducing time complexity to O(n), space 0(n)*/
+/*Reducing time complexity to O(nlogn), space 0(n)*/
+class Solution { 
+public:
+    int minMeetingRooms(vector<vector<int>>& inter) {
+        int room = 0, sum = 0;
+        map<int, int>interval;
+        for(auto x: inter){ // N times
+            interval[x[0]]++; //logN
+            interval[x[1]]--;
+        }
+        for(auto x: interval){
+            sum += x.second;
+            room = max(room, sum);
+        }
+        return room;
+    }
+};
