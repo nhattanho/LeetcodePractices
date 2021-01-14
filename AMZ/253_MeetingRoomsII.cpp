@@ -61,3 +61,26 @@ public:
         return room;
     }
 };
+
+/* The other way */
+class Solution {
+public:
+    int minMeetingRooms(vector<vector<int>>& intervals) {
+        priority_queue<int, vector<int>, greater<int>> checkTime; // priority queue with the top is the smallest number
+        int maxRooms = 0;
+        
+        sort(intervals.begin(),intervals.end(),[](auto& i1,auto& i2){return i1[0]<i2[0];});
+        for (int i = 0; i < intervals.size(); ++i) {
+            int curStart = intervals[i][0];
+            int curEnd = intervals[i][1];
+            // Remove meetings that have concluded
+            while (checkTime.size() && checkTime.top() <= curStart) // we have at least one room available like 0-------------9 and 12---------------30, and 12 >= 9 ==> we don't need to add 1 more room
+                checkTime.pop();
+            // Add our meeting and see how many rooms are in use
+            checkTime.push(curEnd); // adding for updating the top of priority queue
+            maxRooms = max(maxRooms, checkTime.size());
+        }
+        
+        return maxRooms;
+    }
+};
