@@ -8,7 +8,7 @@ class Solution:
         carry = 0
         result = ListNode(0)
         temp = result
-        while l1 or l2:
+        while l1 or l2 or carry:
             val1 = l1.val if l1 else 0
             val2 = l2.val if l2 else 0
             number = val1 + val2 + carry
@@ -23,8 +23,8 @@ class Solution:
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
             
-        if carry == 1:
-            temp.next = ListNode(1)
-            temp = temp.next
-            
         return result.next
+            
+            
+        
+        
