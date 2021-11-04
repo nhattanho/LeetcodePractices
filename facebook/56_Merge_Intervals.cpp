@@ -35,3 +35,25 @@ auto speedup=[](){
     cout.tie(nullptr);
     return nullptr;
 }();
+
+
+
+/*Another optimal approach*/
+#include <vector>
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& inter) {
+        sort(inter.begin(), inter.end());
+        vector<vector<int>>ans;
+        vector<int>temp{inter[0][0], inter[0][1]};
+        ans.push_back(temp);
+        for(auto ele: inter){
+            if(ele[0] > ans.back()[1]) ans.push_back(ele);
+            else {
+                ans.back()[0] = min(ans.back()[0], ele[0]);
+                ans.back()[1] = max(ans.back()[1], ele[1]);
+            }
+        }
+        return ans;
+    }
+};
