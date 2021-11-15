@@ -1,5 +1,24 @@
 /*
-O(rows*cols*cols)
+1 2 3
+4 5 6
+7 8 9
+m is #rows, n is #cols
+In this case get m = n = 3
+could be represented:
+
+                               root                     level 0
+                             /   |   \
+                            1    2    3                 level 1
+                           / | \ ... / | \
+                          4  5  6   4  5  6             level 2
+                        / | \          | / | \     
+                       7  8  9 .... .... 7 8  9         level 3
++For the left branch seen from the root:
+ Level 2: n + n + n + .... + n ==> nxn = n^2
+ Level 1: n^2 + n^2 + .... + n^2 = nxn^2 = n^3
+ ==> In general, the time complexity will be n^m
+ 
+O(cols ^ rows)
 Used dfs go from the top-> bottom, then from left to right
 */
 class Solution {
