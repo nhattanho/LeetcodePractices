@@ -10,7 +10,7 @@ if(sum < 0) {
     nums[i] = max(nums[i], sum); //==> current sum
     maxNum = max(maxNum, nums[i]);
 }
-/*
+*/
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
