@@ -7,6 +7,7 @@ public:
             if(t[i] == s[left]) left++;
             if(left == s.length()) return true;
         }
+        /*In case t.length() < s.length()*/
         return left == s.length()?true:false;
     }
 };
