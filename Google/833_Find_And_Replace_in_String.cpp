@@ -44,11 +44,13 @@ public:
             ind_pos.push_back({indices[i], i});
         }
         
+        /*klogk - k is the length of indices*/
         sort(ind_pos.begin(), ind_pos.end());
         
         string res = "";
         int start = 0, end = 0;
         
+        /*O(n) - n is the length of original string*/
         for(int i = 0; i < len; i++){
             end = ind_pos[i].first;
             int pos = ind_pos[i].second;
