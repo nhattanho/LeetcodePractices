@@ -30,6 +30,15 @@ if amin+amax is always greater than the other pairs ==> it has to be final resul
 
 */
 
+/*Other explanation
+After sorting, we can have the array like [amin ....ai ..... aj..... amax]
+we can have two general way to pair:
+max([amin, amax], [ai, aj]....) (I)
+max([amin, ai], [amax, aj]....) (II)
+
+Since max(I) always < max(II) ==> minimize of max = max(I)
+*/
+
 class Solution {
 public:
     int minPairSum(vector<int>& nums) {
