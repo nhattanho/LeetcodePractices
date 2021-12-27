@@ -17,3 +17,32 @@ public:
         return val;
     }
 };
+
+/*Optimal Solution 1*/
+class Solution {
+public:
+    uint32_t reverseBits(uint32_t n) {
+        uint32_t check_bit = 1, res = 0;
+        uint32_t set_bit = 0x80000000; 
+        while(n != 0){
+            if( (n&check_bit) == 1) res |= set_bit;
+            set_bit >>= 1;
+            n >>= 1;
+        }
+        return res;
+    }
+};
+
+/*Optimal Solution 2*/
+class Solution {
+public:
+    uint32_t reverseBits(uint32_t n) {
+        uint32_t check_bit = 1, move_left = 31, res = 0;
+        while(n != 0){
+            res += (n&check_bit) << move_left;
+            n >>= 1;
+            move_left--;
+        }
+        return res;
+    }
+};
