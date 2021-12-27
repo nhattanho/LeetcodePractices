@@ -1,5 +1,21 @@
-/* Example: 5 <=> 0000 0101 ==> ignore leading 0s ==> 101 ==> flipping it, we have: 010 <=> 2 */
+/*First approach*/
+class Solution {
+public:
+    int findComplement(int num) {
+        int count = 0, res = 0, remain = 0;
+        while(num > 0){
+            remain = num%2;
+            if(remain == 0) remain = 1;
+            else remain = 0;     
+            res += remain*pow(2,count);
+            count++;
+            num /= 2;
+        }
+        return res;
+    }
+};
 
+/* Example: 5 <=> 0000 0101 ==> ignore leading 0s ==> 101 ==> flipping it, we have: 010 <=> 2 */
 class Solution {
 public:
     int findComplement(int num) {
