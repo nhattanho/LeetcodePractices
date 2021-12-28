@@ -21,7 +21,17 @@ public:
     }
 };
 
-/*Better solution by using the teachnique likes Floyd's Cycle Detection*/
+/*Better solution by using the teachnique likes Floyd's Cycle Detection
+example we have n nodes, and having 2 starting point. If the first point
+<=> fast point jumps 2 steps at each time while second point <=> slow point
+jump one step.
+
+So calling x1 is the #steps fast point will have ==> 2x1 = n
+x2 is the #steps slow point jump to reach the n => x2 = n
+==> x1 = x2/2 = n/2
+
+Therefore, if two point starts as the same time, when the fast point reach
+the end, slow point will reach the middle.*/
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
@@ -33,6 +43,19 @@ public:
         }
         return (fast->next==NULL)?low:low->next;
 
+    }
+};
+
+/*More readable*/
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        ListNode *fast = head, *slow = head;
+        while(fast != NULL && fast->next != NULL){
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+        return slow;
     }
 };
 
