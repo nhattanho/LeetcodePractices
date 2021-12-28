@@ -36,3 +36,17 @@ public:
     }
 };
 
+/*Other way using data structure: map or vector are fine*/
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        unordered_map<int, ListNode*>m; /*index, pointer <=> space O(n)*/    
+        int count = 0;
+        while(head != NULL){ /*Time complexity O(n)*/
+            m[count++] = head;
+            head = head->next;
+        }
+        int index = count/2;
+        return m[index];
+    }
+};
