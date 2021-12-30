@@ -53,7 +53,7 @@ public:
         int size = nums.size();
         
         int check_jump = nums[0], farthest = 0, j = 0;
-        for(int i = 0; i < size-1; i++){/*less than size-1 since we dont want to check the end of array, just want to reach it, case check: [0] or [1,2]*/
+        for(int i = 0; i < size-1; i++){/*less than size-1 since we just want to reach the end and dont want to check the end of arr, case check: [0] or [1,2]*/
             farthest = max(farthest, i+nums[i]);
             
             if(i == check_jump){
@@ -74,6 +74,10 @@ public:
         int size = nums.size();
         if(size == 1) return 0;
         int check_jump = nums[0], farthest = 0, j = 0;
+        /*if still check i = size-1, in case check_jump = size-1 will j++, 
+        then out the loop continue j+1 ==> wrong. So, whenever check_jump = equal
+        or > size-1, we know we have increased j++ out of loop -> no need to go to 
+        the last element*/
         for(int i = 0; i < size-1; i++){
             farthest = max(farthest, i+nums[i]);
             
