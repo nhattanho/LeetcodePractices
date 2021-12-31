@@ -81,3 +81,21 @@ public:
 };
 
 /*Approach without using extra space*/
+class Solution {
+public:
+    Node* connect(Node* root) {
+        Node *move = root;/*keep pointer move for going each level-> the end of tree*/
+        while(move != NULL){
+            Node *level = move;
+            while(level != NULL && level->left != NULL && level->right != NULL){/*this loop checks for specific level*/
+                level->left->next = level->right;/*First connection for children has the same parent*/
+                if(level->next!=NULL){/*Second connnection for children has different parent but their parent has same level*/
+                    level->right->next = level->next->left;
+                }
+                level = level->next;
+            }
+            move = move->left;
+        }
+        return root;
+    }
+};
