@@ -1,4 +1,5 @@
-/*We can represent this problem like a tree below
+/*Based on idea https://www.youtube.com/watch?v=6Sux9KoPJsc
+We can represent this problem like a tree below
                                      "AAB"
                           /            |            \
                         A[0]          A[1]           B[2]
