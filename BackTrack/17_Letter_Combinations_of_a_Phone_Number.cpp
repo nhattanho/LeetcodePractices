@@ -52,7 +52,7 @@ the digits like ""pqrs" => the space complexity is the diameter of the tree <=> 
 length of queue <=> 4^N or generally, M^N with M is max #characters, N is #digits input
 
 Besides, we go every node in the tree to form each string => time complexity = number of nodes
-in tree ~ 1+M^1+M^2+....+M^N ~ M^(N+1)
+in tree ~ 1+M^1+M^2+....+M^N ~ M^N
 
 Example for digits = "23"
 q = {""}        q.empty() = false
