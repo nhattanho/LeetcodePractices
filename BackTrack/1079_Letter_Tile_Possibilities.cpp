@@ -71,3 +71,74 @@ public:
         return count;
     }
 };
+
+/*Using BFS*/
+class Solution {
+public:
+    int numTilePossibilities(string tiles) {
+        unordered_set<string>s;
+        queue<pair<string, unordered_set<int>>>q;
+        q.push({"",{-1}});
+        int count = 0;
+        
+        /*Time complexity <=> go every possible node in the tree => M^M, M is the length of tiles */
+        while(!q.empty()){
+            pair<string, unordered_set<int>> top = q.front();
+            q.pop();
+            
+            for(int i = 0; i < tiles.length(); i++){
+                top.first += tiles[i];
+                /*s reduces duplicated string while top.second reduces the 
+                wrong case that the character connect with itself like AAB,
+                then A at index 0 connects with itself to create AA*/
+                if(s.count(top.first) == 0 && !top.second.count(i)){
+                    count++;
+                    s.insert(top.first);
+                    unordered_set<int> temp = top.second;
+                    temp.insert(i);
+                    q.push({top.first, temp});
+                }
+                top.first.pop_back();
+            }
+        }
+        return count;
+        //return s.size();
+    }
+};
+
+/*More optimal than above solution*/
+class Solution {
+public:
+    int numTilePossibilities(string tiles) {
+        unordered_set<string>s;
+        queue<pair<string, unordered_set<int>>>q;
+        q.push({"",{-1}});
+        int count = 0;
+        
+        /*Time complexity <=> go every possible node in the tree => M^M, M is the length of tiles */
+        while(!q.empty()){
+            pair<string, unordered_set<int>> top = q.front();
+            q.pop();
+            
+            /*can stop checking here and backtrack*/
+            if(top.first.length() == tiles.length()) continue;
+            
+            for(int i = 0; i < tiles.length(); i++){
+                top.first += tiles[i];
+                /*s reduces duplicated string while top.second reduces the 
+                wrong case that the character connect with itself like AAB,
+                then A at index 0 connects with itself to create AA*/
+                if(s.count(top.first) == 0 && !top.second.count(i)){
+                    count++;
+                    s.insert(top.first);
+                    unordered_set<int> temp = top.second;
+                    temp.insert(i);
+                    q.push({top.first, temp});
+                }
+                top.first.pop_back();
+            }
+        }
+        return count;
+        //return s.size();
+    }
+};
