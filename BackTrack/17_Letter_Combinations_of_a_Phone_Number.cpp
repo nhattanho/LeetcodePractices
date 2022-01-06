@@ -129,3 +129,53 @@ public:
         return res;
     }
 };
+
+/*Using devide and conquer
+Example:
+                           1 2 3 4 5 6 7 8    (M^8) ==> Time complexity M^(2^logN) = M^N, space = max diameter of the tree in the first level <=> M^N
+                           /            \
+                       1 2 3 4        5 6 7 8 (M^4)
+                       /    \         /    \
+                     1 2    3 4      5 6  7 8 (M^2)
+                     / \     /\      /\    /\
+                     1  2   3  4    5  6  7  8 M
+*/
+class Solution {
+public:
+    vector<string>mapping = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    vector<string>v1, v2;
+    vector<string> connectVector(vector<string>v1, vector<string>v2){
+        vector<string>v = {};
+        for(auto x1:v1)
+            for(auto x2:v2)
+                v.push_back(x1+x2);
+        return v;
+    }
+    
+    vector<string> getString(string digits, int left, int right){
+        if(left > right) return {""};
+        if(left == right){
+            int index = digits[left]-'0'-2;
+            vector<string>v;
+            for(auto x:mapping[index]){
+                string word = "";
+                v.push_back(word+x);
+            }
+            return v;
+        }
+    
+        int mid = (left+right)/2;
+        vector<string> v1 = getString(digits, left, mid);
+        vector<string> v2 = getString(digits, mid+1, right);
+        return connectVector(v1,v2);
+    }
+    
+    vector<string> letterCombinations(string digits) {
+        if(digits.length()== 0) return {};
+        int l = 0, r = digits.length()-1, mid = (r+l)/2;
+        v1 = getString(digits, l, mid);
+        v2 = getString(digits, mid+1, r);
+        return connectVector(v1, v2);
+    }
+};
+
