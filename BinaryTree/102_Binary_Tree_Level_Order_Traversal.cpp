@@ -30,7 +30,7 @@ public:
     
     void getNodes(TreeNode* root, int level){
         if(root == NULL) return;
-        if(v.size() < level+1)
+        if(v.size() < level+1)/*only add a new element in vector at the first time visiting each level*/
             v.push_back({});
         getNodes(root->left, level+1);
         getNodes(root->right, level+1);
