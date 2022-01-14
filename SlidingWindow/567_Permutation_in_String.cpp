@@ -56,6 +56,35 @@ public:
     }
 };
 
+/*More readable*/
+class Solution {
+public:
+    bool checkEqual(string s1, string s2, unordered_map<char, int>m){
+        for(auto x:s2){
+            m[x]--;
+            if(m[x] < 0) return false;
+        }
+        return true;
+    }
+    
+    bool checkInclusion(string s1, string s2) {
+        int len1 = s1.length();
+        int len2 = s2.length();
+        if(len2 < len1) return false;
+        unordered_map<char, int>m1;
+        
+        for(auto x:s1) m1[x]++;
+        
+        for(int i = 0; i <= len2-len1; i++){
+            if(m1.count(s2[i])){
+                string temp = s2.substr(i, len1);
+                if(checkEqual(s1, temp, m1)) return true;
+            }
+        }
+        return false;
+    }
+};
+
 /*Sliding approach*/
 class Solution {
 public:
