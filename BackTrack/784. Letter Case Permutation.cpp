@@ -43,3 +43,55 @@ public:
 };
 
 /*BFS*/
+class Solution {
+public:
+    vector<string> letterCasePermutation(string s) {
+        vector<string>res;
+        queue<string>q;
+        int index = -1;
+        string top = "";
+        q.push(top);
+        
+        while(!q.empty()){ /*Time complexity <=> time go through all node of tree <=> 2^(n+1), space <=> diameter of tree <=> 2^n <=> #leaf node in the last level*/
+            index++;
+            int size = q.size();
+            for(int i = 0; i < size; i++){//ab aB Ab AB
+                string top = q.front();
+                q.pop();
+                
+                if(top.length() == s.length()) {
+                    res.push_back(top);
+                    continue;
+                }
+                
+                if(isalpha(s[index])){
+                    q.push(top + string(1, tolower(s[index]))); //ab
+                    q.push(top + string(1, toupper(s[index]))); //aB
+                }else{
+                    q.push(top + string(1, s[index]));//a1
+                }
+            }
+        }
+        return res;
+        
+    }
+};
+
+/*Iteration without using queue but same complexity for time and space*/
+class Solution {
+public:
+    vector<string> letterCasePermutation(string s) {
+        vector<string>res = {""};
+        vector<string>save;
+        for(auto x:s){
+            for(auto y:res){
+                if(isalpha(x)){
+                    save.push_back(y+string(1,tolower(x)));
+                    save.push_back(y+string(1,toupper(x)));
+                }else save.push_back(y+x);
+            }
+            res = move(save);
+        }
+        return res;
+    }
+};
