@@ -62,3 +62,41 @@ public:
        return image; 
     }
 };
+
+/*Other approach BFS
+Time Complexity O(m*n)
+Space complexity <=> maximum of #element in queue <=> number of elements in diagonal <=> min(m,n)
+Prove: https://imgur.com/gallery/M58OKvB
+*/
+class Solution {
+public:
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+        vector<vector<int>>v = {{-1,0},{1,0},{0,-1},{0,1}};
+        
+        queue<pair<int, int>>q;
+        q.push({sr,sc});
+        
+        int original = image[sr][sc];
+        image[sr][sc] = newColor;
+        
+        while(!q.empty()){
+            pair<int, int>top = q.front();
+            q.pop();
+            /*r-1, c; r+1,c; r, c-1, r,c+1* up down left right*/
+            for(int i = 0; i < v.size(); i++){
+                int newrow = top.first + v[i][0];
+                if(newrow < 0 || newrow >= image.size()) continue;
+                int newcol = top.second + v[i][1];
+                if(newcol < 0 || newcol >= image[0].size()) continue;
+                if(image[newrow][newcol] == original && image[newrow][newcol] != newColor)
+                {
+                    image[newrow][newcol] = newColor;
+                    q.push({newrow, newcol});
+                }
+            }   
+        }
+        
+        return image;
+    }
+};
+
