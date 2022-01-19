@@ -1,4 +1,4 @@
-/* Using DFS */
+/* Using DFS - Time complexity = Space complexity = O(m*n) */
 class Solution {
 public:
     void fill(vector<vector<int>>&image, int row, int col, int color, int lenR, int lenC,int oldColor){
