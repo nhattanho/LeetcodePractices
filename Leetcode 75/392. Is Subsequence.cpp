@@ -33,3 +33,32 @@ public:
         return false;
     }
 };
+
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        int s_point = 0, t_point = 0;
+        
+        while(s_point != s.length()){
+            if(t.length() == 0) return false;
+            if(s[s_point] == t[t_point]) s_point++;
+            t_point++;
+            if(s_point == s.length()) return true;
+            if(t_point == t.length()) return false;
+        }
+        return true;
+    }
+};
+
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        int s_point = 0, t_point = 0;
+        
+        while(s_point < s.length() && t_point < t.length()){
+            if(s[s_point] == t[t_point]) s_point++;
+            t_point++;
+        }
+        return s_point == s.length();
+    }
+};
