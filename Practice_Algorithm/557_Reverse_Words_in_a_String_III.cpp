@@ -37,3 +37,54 @@ public:
         return s;
     }
 };
+
+/*Worked with List*/
+class Solution {
+public:
+    string reverseWords(string s) {
+        reverse(s.begin(), s.end());
+        list<string>temp;
+        
+        stringstream character(s);
+        string word;
+        while(character >> word){
+            temp.push_front(word); //Will take O(n) for pushing in front
+        }
+        string res;
+        list<string>::iterator it;
+        int count = 0;
+        for(it = temp.begin(); it != temp.end(); it++){
+            count++;
+            res += *it;
+            if(count !=temp.size())
+                res += " ";
+        }
+            
+        return res;
+    }
+};
+
+/*Worked with List but more optimization*/
+class Solution {
+public:
+    string reverseWords(string s) {
+        reverse(s.begin(), s.end());
+        list<string>temp;
+        
+        stringstream character(s);
+        string word;
+        while(character >> word){
+            temp.push_back(word);//take 0(1)
+        }
+        string res;
+        int count = 0;
+        for(auto it = temp.rbegin(); it != temp.rend(); it++){
+            count++;
+            res += *it;
+            if(count !=temp.size())
+                res += " ";
+        }
+            
+        return res;
+    }
+};
