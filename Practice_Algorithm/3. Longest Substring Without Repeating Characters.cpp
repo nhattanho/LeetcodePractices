@@ -67,3 +67,29 @@ public:
         return maxLen;
     }
 };
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_map<char, int>m;
+        int len = s.length();
+        int l = 0, res = 0;
+        for(int i = 0; i<s.length(); i++){
+            char t = s[i];
+            if(!m.count(t)) {
+                res = max(res, i-l+1);
+                m[t]=i;
+            }
+            else{
+                int pos = m[t];
+                if(l <= pos) {
+                    res = max(res, i-l);
+                    l = pos+1;
+                }
+                else res = max(res, i-l+1);
+                m[t] = i;    
+            }
+        }
+        return res;
+    }
+};
