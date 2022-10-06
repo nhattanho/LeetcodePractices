@@ -24,3 +24,25 @@ class Solution {
         return r1;
     }
 }
+
+class Solution {
+    public TreeNode mergeTrees(TreeNode r1, TreeNode r2) {
+        if(r1 == null) return r2;
+        if(r2 == null) return r1;
+        Stack<TreeNode[]>st = new Stack();
+        st.push(new TreeNode[]{r1, r2});
+        while(!st.empty()){
+            TreeNode[] t = st.pop();
+            TreeNode t1 = t[0];
+            TreeNode t2 = t[1];
+            if(t1!=null && t2!=null){
+                t1.val += t2.val;
+                if(t1.left!=null && t2.left!=null) st.push(new TreeNode[]{t1.left, t2.left});
+                else if(t1.left==null && t2.left!=null) t1.left = t2.left;
+                if(t1.right!=null && t2.right!=null) st.push(new TreeNode[]{t1.right, t2.right});
+                else if(t1.right==null && t2.right!=null) t1.right = t2.right;
+            }
+        }
+        return r1;
+    }
+}
