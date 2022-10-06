@@ -40,3 +40,45 @@ public:
         return root;
     }
 };
+
+class Solution {
+public:
+    Node* connect(Node* root) {
+        Node* level = root, *move = root;
+        if(root == NULL) return NULL;
+        
+        while(level->left){
+            move = level;
+            while(move){
+                if(move->left){
+                    move->left->next = move->right;
+                }
+                if(move->next)
+                    move->right->next = move->next->left;
+                move = move->next;
+            }
+            level = level->left;   
+        }
+        return root;
+    }
+};
+
+class Solution {
+public:
+    Node* connect(Node* root) {
+        Node* level = root, *move = root;
+        if(root == NULL) return NULL;
+        
+        while(level->left){
+            move = level;
+            while(move){
+                move->left->next = move->right;
+                if(move->next)
+                    move->right->next = move->next->left;
+                move = move->next;
+            }
+            level = level->left;   
+        }
+        return root;
+    }
+};
