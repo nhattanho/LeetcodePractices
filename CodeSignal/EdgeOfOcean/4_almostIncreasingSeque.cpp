@@ -1,5 +1,6 @@
 /* https://app.codesignal.com/arcade/intro/level-2/2mxbGwLzvkTCKAJMG */
 /* Time complexity O(n), space O(1) */
+// https://www.anycodings.com/1questions/1999090/almost-increasing-sequence-java
 
 bool almostIncreasingSequence(std::vector<int> se) {
     int len = se.size();
