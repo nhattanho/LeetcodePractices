@@ -36,3 +36,42 @@ public:
         return resMax;
     }
 };
+
+class Solution {
+public:
+    vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
+        int row = mat.size();
+        int col = mat[0].size();
+        vector<vector<int>>dist(row, vector<int>(col, INT_MAX));
+        queue<pair<int, int>>q;
+        for(int r = 0; r<row; r++){
+            for(int c = 0; c<col; c++){
+                if(mat[r][c] == 0) {
+                    dist[r][c] = 0;
+                    q.push({r,c});
+                }
+            }
+        } 
+        int dir[4][2] = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+        while(!q.empty()){
+            pair<int, int>p = q.front();
+            q.pop();
+            int r = p.first;
+            int c = p.second;
+            for(int i = 0; i < 4; i++){
+                int newr = r + dir[i][0];
+                int newc = c + dir[i][1];
+                //coordination in the queue is the nearest to the 0, so for the new position,
+                //just need to check when it is greater than the current + 1
+                if(newr >=0 && newc >=0 && newr < row && newc < col && mat[newr][newc] == 1){
+                    if(dist[r][c] + 1 < dist[newr][newc]){
+                        //dist[newr][newc] = min(dist[newr][newc], dist[r][c]+1);
+                        dist[newr][newc] = dist[r][c]+1;
+                        q.push({newr,newc});
+                    }                   
+                }
+            }
+        }
+        return dist;
+    }
+};
