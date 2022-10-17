@@ -1,3 +1,4 @@
+/*DFS WITH TLE*/
 class Solution {
 public:
     int minNum(int n1, int n2, int n3, int n4){
@@ -76,3 +77,59 @@ public:
         return dist;
     }
 };
+
+/*Why this code below is false*/
+class Solution {
+    public int[][] updateMatrix(int[][] mat) {
+        int row = mat.length;
+        int col = mat[0].length;
+        int[][] dist = new int[row][col];
+        Queue<int[]>q = new LinkedList<>();
+        
+        Arrays.stream(dist).forEach(a->Arrays.fill(a,Integer.MAX_VALUE));
+        for(int r = 0; r < row; r++){
+            for(int c = 0; c< col; c++){
+                if(mat[r][c] == 0){
+                    dist[r][c] = 0;
+                }
+            }
+        }
+        int[][] dir = {{1,0},{-1,0},{0,1},{0,-1}};
+        int count = 0;
+        while(count < row){  
+            for(int r = 0; r < row; r++){
+                for(int c = 0; c < col; c++){
+                    if(mat[r][c] == 1){
+                        int minV = Integer.MAX_VALUE;
+                        for(int i = 0; i < 4; i++){
+                            int newr = r + dir[i][0];
+                            int newc = c + dir[i][1];
+                            if(newr>=0&&newc>=0&&newr<row&&newc<col){
+                                minV = Math.min(minV, dist[newr][newc]);
+                            }
+                        }
+                        if(minV != Integer.MAX_VALUE)
+                            dist[r][c] = Math.min(minV+1, dist[r][c]);
+                    }
+                }
+            }
+            count++;
+        }
+        
+        return dist;
+    }
+}
+
+/*==>Since it does not check the nearest position to 0 first.
+For example:
+0 1 1 1 1 1 1 
+1 1 1 1 1 1 1
+1 1 1 1 0 1 1
+
+the value at [0][4] will be 4 but it should be 2 if we compare
+with the 0 at [2][4]
+
+Fixed code below:
+*/
+
+
