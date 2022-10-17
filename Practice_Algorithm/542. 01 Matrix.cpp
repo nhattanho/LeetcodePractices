@@ -36,7 +36,8 @@ public:
         return resMax;
     }
 };
-
+/*Since we need to find the nearest distant from 0, then the easy way is
+to save all positions of 0 fisrt then spread out to 4 directions*/
 class Solution {
 public:
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
