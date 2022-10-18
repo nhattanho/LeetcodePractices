@@ -61,3 +61,44 @@ class Solution {
         return dist;
     }
 }
+
+
+
+class Solution {
+    public int[][] updateMatrix(int[][] mat) {
+        int row = mat.length;
+        int col = mat[0].length;
+        int[][] dist = new int[row][col];
+        Arrays.stream(dist).forEach(a->Arrays.fill(a,Integer.MAX_VALUE));
+        
+        for(int r = 0; r < row; r++){
+            for(int c = 0; c< col; c++){
+                if(mat[r][c] == 0)  dist[r][c] = 0;   
+            }
+        }
+        
+        for(int r = 0; r < row; r++){
+            for(int c = 0; c< col; c++){
+                if(mat[r][c] != 0){
+                    int tmp = Integer.MAX_VALUE;
+                    if(r-1>=0) tmp = Math.min(tmp, dist[r-1][c]);
+                    if(c-1>=0) tmp = Math.min(tmp, dist[r][c-1]);
+                    if(tmp != Integer.MAX_VALUE) dist[r][c] = tmp+1;
+                }
+            }
+        }
+        
+        for(int r = row-1; r >= 0; r--){
+            for(int c = col-1; c>=0; c--){
+                if(mat[r][c] != 0){
+                    int tmp = Integer.MAX_VALUE;
+                    if(c+1<col) tmp = Math.min(tmp, dist[r][c+1]);
+                    if(r+1<row) tmp = Math.min(tmp, dist[r+1][c]);
+                    if(tmp != Integer.MAX_VALUE) dist[r][c] = Math.min(dist[r][c], tmp+1);
+                }
+            }
+        }
+        
+        return dist;
+    }
+}
