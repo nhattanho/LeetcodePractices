@@ -26,6 +26,57 @@ public:
     }
 };
 
+/*Using BFS
+Find the nearest 0 -> start from positions that has 0 first, then 
+expand from that 0's position step by step => need to have a queue
+to save the postions*/
+class Solution {
+    public int[][] updateMatrix(int[][] mat) {
+        int row = mat.length;
+        int col = mat[0].length;
+        int[][]dist = new int[row][col];
+        Arrays.stream(dist).forEach(a->Arrays.fill(a,Integer.MAX_VALUE));
+        
+        Queue<int[]>q = new LinkedList<>();
+        int[][]dir = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
+        
+        for(int r = 0; r < row; r++){
+            for(int c = 0; c < col; c++){
+                if(mat[r][c] == 0){
+                    dist[r][c] = 0;
+                    for(int i = 0; i < 4; i++){
+                        int newr = r + dir[i][0];
+                        int newc = c + dir[i][1];
+                        if(newr>=0&&newc>=0&&newr<row&&newc<col&&mat[newr][newc] == 1){
+                            dist[newr][newc] = 1;
+                            q.add(new int[]{newr, newc});
+                        }
+                    }
+                }
+            }
+        }
+        
+        while(q.size() != 0){
+            int[]top = q.poll();
+            int r = top[0];
+            int c = top[1];
+            for(int i = 0; i < 4; i++){
+                int newr = r + dir[i][0];
+                int newc = c + dir[i][1];
+                if(newr>=0&&newc>=0&&newr<row&&newc<col&&mat[newr][newc] == 1){
+                    if(dist[r][c] +1 < dist[newr][newc]){
+                        dist[newr][newc] = dist[r][c] +1;
+                        q.add(new int[]{newr, newc});
+                    }
+                }
+            }
+        }
+        
+        return dist;
+    }
+}
+
+/*Optimal BFS*/
 class Solution {
     public int[][] updateMatrix(int[][] mat) {
         int row = mat.length;
