@@ -28,6 +28,21 @@ class Solution {
         return remain;
     }
 }
+/*
+                    4 ==> remain 4
+                  /   \
+                 1     2
+                (3)    (2) ==> remain 3, remain 2;
+               /   \    |
+              1     2  ...
+             (2)    (1) --> remain 2, remain 1
+            /   \
+           1     2
+          (1)   (0) ==> remain 1, remain 0
+         /   \
+        1     2
+       (0)   (-1 reject)
+*/
 
 /*Optimize BackTrack*/
 class Solution {
@@ -43,7 +58,8 @@ class Solution {
     int count = 0;
     public int climbStairs(int n) {//n=3
         if(n == 1) return 1;
-        int[]dp = new int[n+1];
+        vector<int>v(n+1);
+        //int[]dp = new int[n+1]; for java code
         dp[0] = 1;
         dp[1] = 1;
         for(int i = 2; i <=n; i++){
