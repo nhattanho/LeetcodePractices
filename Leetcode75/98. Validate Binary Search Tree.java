@@ -44,3 +44,21 @@ class Solution {
 }
 
 /**/
+public boolean isValidBST(TreeNode node) {
+        if(node == null) return true;
+        TreeNode upper = null, lower = null;
+        Queue<TreeNode[]>q = new LinkedList<>();
+        q.add(new TreeNode[]{lower, node, upper});
+        while(q.size()!=0){
+            TreeNode[] t = q.poll();
+            TreeNode l = t[0];
+            TreeNode n = t[1];
+            TreeNode u = t[2];
+            if(n == null) continue;
+            if(u!= null && n.val >= u.val) return false;
+            if(l!= null && n.val <= l.val) return false;
+            q.add(new TreeNode[]{l, n.left, n});
+            q.add(new TreeNode[]{n, n.right, u});
+        }
+        return true;
+    }   
