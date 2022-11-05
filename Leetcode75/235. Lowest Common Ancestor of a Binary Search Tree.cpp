@@ -45,3 +45,17 @@ public:
         else return root;
     }
 };
+
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        int pVal = p->val;
+        int qVal = q->val;
+        while(true){
+            int paVal = root->val;
+            if(pVal < paVal && qVal < paVal) root = root->left;
+            else if(pVal > paVal && qVal > paVal) root = root->right;
+            else return root;
+        }
+    }
+};
