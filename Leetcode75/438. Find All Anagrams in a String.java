@@ -61,3 +61,40 @@ class Solution {
         return l;
     }
 }
+
+
+class Solution {
+
+    public boolean compareArray(int[] arr1, int[]arr2){
+        for(int i = 0; i < arr1.length; i++){
+            if(arr1[i] != arr2[i]) return false;
+        }
+        return true;
+    }
+
+    public List<Integer> findAnagrams(String s, String p) {
+        int len1 = s.length();
+        int len2 = p.length();
+        if(len2 > len1) return new LinkedList<>(){};
+
+        List<Integer>l = new LinkedList<>();
+
+        int[] arrs = new int[26];
+        int[] arrp = new int[26];
+        Arrays.fill(arrs, 0);
+        Arrays.fill(arrp, 0);
+
+        for(int i = 0; i < len2; i++){
+            arrs[s.charAt(i)-'a']++;
+            arrp[p.charAt(i)-'a']++;
+        }
+        if(compareArray(arrs, arrp)) l.add(0);
+
+        for(int i = 1; i <= len1-len2; i++){
+            arrs[s.charAt(i-1)-'a']--;
+            arrs[s.charAt(i+len2-1)-'a']++;
+            if(compareArray(arrs, arrp)) l.add(i);
+        }
+        return l;
+    }
+}
