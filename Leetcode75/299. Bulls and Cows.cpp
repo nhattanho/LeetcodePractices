@@ -33,3 +33,35 @@ public:
         return res;
     }
 };
+
+/*Optimization*/
+class Solution {
+public:
+    string getHint(string s, string g) {
+        int len = g.length();
+        int bulls = 0; 
+        int cows = 0;
+        map<char, int>m;
+        for(auto x: s) m[x]++;
+
+        /*Find bulls first*/
+        for(int i = 0; i < len; i++){
+            if(s[i] == g[i]){
+                bulls++;
+                m[s[i]]--;
+            }
+        }
+        
+        /*Find cows*/
+        for(int i = 0; i < len; i++){
+            char c = g[i];
+            if(m[c] != 0 && c != s[i]){
+                cows++;
+                m[c]--;
+            }
+        }
+        string res = to_string(bulls) + "A" + to_string(cows) + "B";
+        return res;
+    }
+};
+
