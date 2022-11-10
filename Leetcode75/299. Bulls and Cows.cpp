@@ -65,3 +65,56 @@ public:
     }
 };
 
+
+
+class Solution {
+public:
+    string getHint(string s, string g) {
+        unordered_map<char, int>m;
+        for(auto x: s) m[x]++;
+        int bulls = 0, cows = 0;
+        
+        for(int i = 0; i < g.length(); i++){
+            if(s[i] == g[i]){
+                if(m[s[i]] == 0){//deteced bulls but its frequency is 0 means cows was increased incorrectly
+                    bulls++;
+                    cows--;
+                }else{
+                    bulls++;
+                    m[s[i]]--;
+                }
+            }else{
+                if(m[g[i]] != 0){ /*just increased cows whenever character appeared in secret string */
+                    m[g[i]]--;
+                    cows++;
+                }
+            }    
+        }
+        return to_string(bulls) + "A" + to_string(cows) + "B";
+    }
+};
+
+
+/*Optimized above code*/
+class Solution {
+public:
+    string getHint(string s, string g) {
+        unordered_map<char, int>m;
+        for(auto x: s) m[x]++;
+        int bulls = 0, cows = 0;
+        
+        for(int i = 0; i < g.length(); i++){
+            if(s[i] == g[i]){
+                bulls++;
+                if(m[s[i]] == 0) cows--;
+                else m[s[i]]--;
+            }else if(m[g[i]] != 0){
+                    m[g[i]]--;
+                    cows++;
+            }    
+        }
+        return to_string(bulls) + "A" + to_string(cows) + "B";
+    }
+};
+
+
