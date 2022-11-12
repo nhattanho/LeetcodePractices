@@ -50,3 +50,20 @@ public:
         return true;
     }
 };
+
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        unordered_map<char, char>m;
+        unordered_map<char, int>m1;
+        for(int i = 0; i < s.length(); i++){
+            if(m.count(s[i])==0) {
+                if(m1[t[i]] != 0) return false; //two characters points the same one in string t
+                m[s[i]] = t[i];
+                m1[t[i]]++;
+            }
+            else if(m[s[i]]!=t[i]) return false;
+        }
+        return true;
+    }
+};
