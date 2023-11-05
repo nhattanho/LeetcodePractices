@@ -60,6 +60,7 @@ public:
                 int digit1 = num1[i1] - '0';
                 int temp = digit1*digit2;
 
+                // focus on the sum of the same column
                 res[i2+i1+1] += temp;
                 res[i2+i1] += res[i2+i1+1]/10;
                 res[i2+i1+1] %= 10;
