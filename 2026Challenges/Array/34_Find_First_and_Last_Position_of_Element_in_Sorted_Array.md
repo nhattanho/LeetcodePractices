@@ -420,3 +420,83 @@ public:
 ```
 
 > **Note:** This works but is less efficient than the two-pass boundary search when many duplicates exist. Prefer `findFirst` / `findLast` or `lower_bound` / `upper_bound` for the required O(log n) guarantee.
+
+---
+
+## Alternative Solution: Early Boundary Exit
+
+**Idea:** Same boundary-search spirit as `findFirst` / `findLast`, but with an **early return** when the neighbor confirms the boundary:
+
+- `findStart` — if `nums[mid] == target` and `nums[mid - 1] != target`, this is the first occurrence
+- `findEnd` — if `nums[mid] == target` and `nums[mid + 1] != target`, this is the last occurrence
+
+Otherwise, keep squeezing left (`right = mid - 1`) or right (`left = mid + 1`) as before.
+
+| | |
+|---|---|
+| **Time** | O(log n) — two single-pass binary searches |
+| **Space** | O(1) |
+
+```cpp
+class Solution {
+public:
+    vector<int> res;
+
+    int findStart(int left, int right, vector<int>& nums, int target)
+    {
+        int mid = -1, answer = -1;
+
+        while (left <= right)
+        {
+            mid = (left + right) / 2;
+
+            if (nums[mid] == target)
+            {
+                if (mid - 1 >= 0 && nums[mid - 1] != target) return mid;
+                answer = mid;
+                right = mid - 1;
+            }
+
+            if (nums[mid] < target) left = mid + 1;
+            if (nums[mid] > target) right = mid - 1;
+        }
+
+        return answer;
+    }
+
+    int findEnd(int left, int right, vector<int>& nums, int target)
+    {
+        int mid = -1, answer = -1;
+
+        while (left <= right)
+        {
+            mid = (left + right) / 2;
+
+            if (nums[mid] == target)
+            {
+                if (mid + 1 <= right && nums[mid + 1] != target) return mid;
+                answer = mid;
+                left = mid + 1;
+            }
+
+            if (nums[mid] < target) left = mid + 1;
+            if (nums[mid] > target) right = mid - 1;
+        }
+
+        return answer;
+    }
+
+    vector<int> searchRange(vector<int>& nums, int target)
+    {
+        int len = nums.size();
+        int left = 0, right = len - 1;
+
+        int start = findStart(left, right, nums, target);
+        int stop  = findEnd(left, right, nums, target);
+
+        return {start, stop};
+    }
+};
+```
+
+> **Note:** Equivalent to the main `findFirst` / `findLast` approach — just exits as soon as the left/right neighbor proves the boundary. Returns `{-1, -1}` implicitly when `target` is absent (`findStart` and `findEnd` both return `-1`).
