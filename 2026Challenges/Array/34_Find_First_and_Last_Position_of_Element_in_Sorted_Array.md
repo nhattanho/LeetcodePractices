@@ -286,6 +286,39 @@ public:
 | **Time** | O(log n) — two binary searches, still O(log n) |
 | **Space** | O(1) |
 
+### Why not O(k log n)?
+
+A common doubt: if `target` appears **k** times, don't we need **k** passes, each costing O(log n)?
+
+**No** — `findFirst` / `findLast` each run **one** `while` loop, not k separate binary searches.
+
+When `nums[mid] == target`:
+
+- `findFirst` → `right = mid - 1` (keep squeezing left)
+- `findLast`  → `left = mid + 1`  (keep squeezing right)
+
+Each loop iteration **shrinks the search range**. You are not re-starting binary search from scratch for every duplicate.
+
+**Trace:** `nums = [8, 8, 8, 8, 8, 8, 8, 8]`, find last 8 (n = 8, k = 8)
+
+```text
+Iter 1: l=0, r=7, mid=3 → found, ans=3, l=4
+Iter 2: l=4, r=7, mid=5 → found, ans=5, l=6
+Iter 3: l=6, r=7, mid=6 → found, ans=6, l=7
+Iter 4: l=7, r=7, mid=7 → found, ans=7, l=8
+Done in 4 iterations — not 8
+```
+
+Even with k = n (all elements equal `target`), iterations stay **O(log n)**.
+
+| Approach | Time | Why |
+|----------|------|-----|
+| `findFirst` / `findLast` | **O(log n)** | Single loop; range halves or advances each iteration |
+| Recursive `findPos` (below) | **O(k log n)** | One BS call per occurrence found, then recurse left & right |
+| Linear scan after one BS | **O(k)** or **O(n)** | Walk through every duplicate |
+
+The O(k log n) concern applies to the **recursive alternative** in this doc — not to the boundary-search version.
+
 ---
 
 ## Follow-up: Even Better Interview Discussion
@@ -320,3 +353,70 @@ vector<int> searchRange(vector<int>& nums, int target)
 ```
 
 This demonstrates that you understand the deeper concept behind binary search — **boundaries** rather than just memorizing a LeetCode solution. Many interviewers view that explanation as a sign of real understanding.
+
+---
+
+## Alternative Solution: Recursive Binary Search
+
+**Idea:** Find one occurrence with standard binary search, then recursively search the left and right halves to collect all matching indices. Return the first and last from the collected results.
+
+| | |
+|---|---|
+| **Time** | O(k log n) worst case — k = number of `target` occurrences |
+| **Space** | O(k) for `res`, plus O(log n) recursion stack |
+
+```cpp
+class Solution {
+public:
+    vector<int> res;
+
+    int findPos(int left, int right, vector<int>& nums, int target)
+    {
+        if (left > right) return -1;
+
+        bool found = false;
+        int mid = -1;
+        int temp = -1;
+
+        while (left <= right)
+        {
+            mid = (left + right) / 2;
+
+            if (nums[mid] == target)
+            {
+                found = true;
+                break;
+            }
+
+            if (nums[mid] < target) left = mid + 1;
+            if (nums[mid] > target) right = mid - 1;
+        }
+
+        if (!found) return -1;
+
+        temp = findPos(left, mid - 1, nums, target);
+        if (temp != -1) res.push_back(temp);
+
+        res.push_back(mid);
+
+        temp = findPos(mid + 1, right, nums, target);
+        if (temp != -1) res.push_back(temp);
+
+        return -1;
+    }
+
+    vector<int> searchRange(vector<int>& nums, int target)
+    {
+        int len = nums.size();
+        int left = 0, right = len - 1;
+
+        findPos(left, right, nums, target);
+
+        if (res.size() == 0) return {-1, -1};
+
+        return {res[0], res[res.size() - 1]};
+    }
+};
+```
+
+> **Note:** This works but is less efficient than the two-pass boundary search when many duplicates exist. Prefer `findFirst` / `findLast` or `lower_bound` / `upper_bound` for the required O(log n) guarantee.
